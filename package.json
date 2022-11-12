@@ -33,6 +33,7 @@
     "yargs": "^15.0.0"
   },
   "devDependencies": {
+    "dotenv": "^16.0.3",
     "jest": "^24.8.0"
   },
   "keywords": [

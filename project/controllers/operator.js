@@ -18,7 +18,7 @@ const { Logger }
 class Operator {
 
     constructor() {
-        this.getRepoTimeout = 45000;
+        this.getRepoTimeout = 145000;
     }
 
     /**

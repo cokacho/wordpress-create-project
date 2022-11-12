@@ -2,6 +2,7 @@
  * Testing the operator with JestJS
  * @docs https://jestjs.io/docs/en/getting-started
  **/
+const { env: env } = require( '../environment' );
 const del      = require( 'del' );
 const path     = require( 'path' );
 const { existsSync, mkdirSync }
@@ -43,7 +44,7 @@ afterEach( async () => {
  * Tests
  */
 test( 'Check if the git repo gets cloned and we can find the files to scan', async () => {
-    await operator.getRepo( 'https://github.com/wp-strap/wordpress-plugin-boilerplate.git', testFiles.dir )
+    await operator.getRepo( env.wordpress_plugin_repository, testFiles.dir )
     expect( existsSync(
         path.join( testFiles.dir, 'the-plugin-name.php' )
     ) ).toBe( true );

@@ -1,8 +1,10 @@
 /**
+ * @type env: Global environment variables defined into the file ./environment.js
  * @type replace : A simple utility to quickly replace text in one or more files or globs.
  * @type path : The path module provides utilities for working with file and directory paths.
  * @type del : Delete files and directories using globs
  */
+const { env: env } = require( '../../../environment' );
 const replace = require( 'replace-in-file' );
 const path    = require( 'path' );
 const { existsSync, writeFileSync, readFile, mkdirSync }
@@ -297,11 +299,11 @@ class Scanner {
          */
         if ( data.webpack === 'yes' ) {
             const packageJsonFile = path.join( projectPath, 'package.json' );
-            await fs.move( projectPath + '/wordpress-webpack-workflow/assets/src', projectPath + '/assets/src' );
-            await fs.move( projectPath + '/wordpress-webpack-workflow/webpack', projectPath + '/webpack' );
-            await fs.move( projectPath + '/wordpress-webpack-workflow/package.json', projectPath + '/package.json' );
-            await fs.move( projectPath + '/wordpress-webpack-workflow/webpack.config.js', projectPath + '/webpack.config.js' );
-            await this.removeFolder( projectPath + '/wordpress-webpack-workflow/' );
+            await fs.move( projectPath + `${env.wordpress_plugin_webpack_folder}/assets/src`, projectPath + '/assets/src' );
+            await fs.move( projectPath + `${env.wordpress_plugin_webpack_folder}/webpack`, projectPath + '/webpack' );
+            await fs.move( projectPath + `${env.wordpress_plugin_webpack_folder}/package.json`, projectPath + '/package.json' );
+            await fs.move( projectPath + `${env.wordpress_plugin_webpack_folder}/webpack.config.js`, projectPath + '/webpack.config.js' );
+            await this.removeFolder( projectPath + `${env.wordpress_plugin_webpack_folder}/` );
             /**
              * Package.json
              */

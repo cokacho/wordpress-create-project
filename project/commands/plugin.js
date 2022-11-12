@@ -1,5 +1,10 @@
 #!/usr/bin/env node
 /**
+ * @type env : Global environment settings defined into the file environment.js
+ * @see environment.js
+ */
+const { env: env } = require( '../../environment' );
+/**
  * @type path : The path module provides utilities for working with file and directory paths.
  */
 const path = require( 'path' );
@@ -68,7 +73,7 @@ exports.handler = async ( argv ) => {
      */
     await terminal.install( {
         describe: `${ terminal.step }. Operator is cloning plugin repository`,
-        event:    operator.getRepo( 'https://github.com/wp-strap/wordpress-plugin-boilerplate.git', projectPath ),
+        event:    operator.getRepo( env.wordpress_plugin_repository, projectPath ),
     } );
     terminal.setNextStep();
 
@@ -80,7 +85,7 @@ exports.handler = async ( argv ) => {
         await terminal.setPredefinedAnswers( QuestionsWebpack, argv );
         await terminal.install( {
             describe: `${ terminal.step }. Operator is cloning webpack repository`,
-            event:    operator.getRepo( 'https://github.com/wp-strap/wordpress-webpack-workflow.git', projectPath + '/wordpress-webpack-workflow' ),
+            event:    operator.getRepo( env.wordpress_plugin_webpack_repository, projectPath + env.wordpress_plugin_webpack_folder ),
         } );
         const promptedInfoWebpack = await operator.prompt( QuestionsWebpack, argv, true );
         terminal.setNextStep();
@@ -148,7 +153,7 @@ exports.handler = async ( argv ) => {
     log.message( `If you use Codeception for testing then you need to configure your local testing environment in ${ log.variable( '.env.testing' ) }` );
     log.message( `If you use webpack then edit the BrowserSync settings in ${ log.variable( 'webpack.config.js' ) } if you want to make use of it.` );
     log.message( '' );
-    log.message( `Please read the documentation ${ log.variable( 'https://github.com/wp-strap/wordpress-plugin-boilerplate' ) } if you run into any issues or if you have any questions.` );
+    log.message( `Please read the documentation ${ log.variable( env.wordpress_plugin_repository ) } if you run into any issues or if you have any questions.` );
     log.message( '' );
     log.message( 'You can activate the plugin in WordPress and work on it straight away. Good luck!' );
     log.message( '----------------' );

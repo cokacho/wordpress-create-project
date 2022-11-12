@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 /**
+ * @type env : Global environment settings defined into the file environment.js
+ * @see environment.js
+ */
+ const { env: env } = require( '../../environment' );
+
+/**
  * @type path : The path module provides utilities for working with file and directory paths.
  */
 const path = require( 'path' );
@@ -69,7 +75,7 @@ exports.handler = async ( argv ) => {
      */
     await terminal.install( {
         describe: `${ terminal.step }. Operator is cloning repository`,
-        event:    operator.getRepo( 'https://github.com/wp-strap/wordpress-webpack-workflow.git', projectPath ),
+        event:    operator.getRepo( env.wordpress_plugin_webpack_repository, projectPath ),
     } );
     terminal.setNextStep();
 
@@ -120,7 +126,7 @@ exports.handler = async ( argv ) => {
     log.message( `You may want to configure the files in ${ log.variable( '/webpack/' ) } and ${ log.variable( 'webpack.config.js' ) } to better suite your needs.` );
     log.message( `Run ${ log.variable( 'yarn dev' ) } / ${ log.variable( 'yarn dev:watch' ) } or ${ log.variable( 'yarn prod' ) } / ${ log.variable( 'yarn prod:watch' ) } to start the build process.` );
     log.message( '' );
-    log.message( `Please read the documentation ${ log.variable( 'https://github.com/wp-strap/wordpress-webpack-workflow' ) } if you run into any issues or if you have any questions.` );
+    log.message( `Please read the documentation ${ log.variable( env.wordpress_plugin_webpack_repository ) } if you run into any issues or if you have any questions.` );
     log.message( '' );
     log.message( 'Good luck!' );
     log.message( '----------------' );
