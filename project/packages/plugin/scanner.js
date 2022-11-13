@@ -70,7 +70,7 @@ class Scanner {
     async searchReplace( data, projectPath ) {
         const phpFiles         = [
             path.join( projectPath, 'the-plugin-name.php' ),
-            path.join( projectPath, 'src', 'bootstrap.php' ),
+            path.join( projectPath, 'src', 'Bootstrap.php' ),
             path.join( projectPath, 'src', 'App', '**', '*.php' ),
             path.join( projectPath, 'src', 'Common', '**', '*.php' ),
             path.join( projectPath, 'src', 'Compatibility', '**', '*.php' ),
@@ -90,7 +90,7 @@ class Scanner {
         const travisCiFiles    = [
             path.join( projectPath, '.travis.yml' ),
         ];
-        const bootstrapFile    = path.join( projectPath, 'src', 'bootstrap.php' );
+        const bootstrapFile    = path.join( projectPath, 'src', 'Bootstrap.php' );
         const composerFile     = path.join( projectPath, 'composer.json' );
         const pathEntryFile    = path.join( projectPath, `the-plugin-name.php` );
 
@@ -348,8 +348,8 @@ class Scanner {
      * @returns {Promise<void>}
      */
     async searchReplaceWebPack( data, projectPath ) {
-        const webpackConfig   = path.join( projectPath, '/wordpress-webpack-workflow/webpack.config.js' );
-        const jsFiles         = path.join( projectPath, '/wordpress-webpack-workflow/assets', 'src', 'js', '**', '*.js' );
+        const webpackConfig   = path.join( projectPath, `${env.wordpress_plugin_webpack_folder}/webpack.config.js` );
+        const jsFiles         = path.join( projectPath, `${env.wordpress_plugin_webpack_folder}/assets`, 'src', 'js', '**', '*.js' );
 
         /**
          * Change CSS type

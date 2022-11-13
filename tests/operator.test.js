@@ -52,9 +52,9 @@ test( 'Check if the git repo gets cloned and we can find the files to scan', asy
         path.join( testFiles.dir, 'composer.json' )
     ) ).toBe( true );
     expect( existsSync(
-        path.join( testFiles.dir, 'classes', 'Bootstrap.php' )
+        path.join( testFiles.dir, 'src', 'Bootstrap.php' )
     ) ).toBe( true );
     expect( existsSync(
-        path.join( testFiles.dir, 'classes', 'App', 'Frontend', 'Templates.php' )
+        path.join( testFiles.dir, 'src', 'App', 'Frontend', 'Templates.php' )
     ) ).toBe( true );
 } );
